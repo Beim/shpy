@@ -1,0 +1,22 @@
+{
+    "server": {
+        "host": "localhost",
+        "port": 18080,
+        "protocol": "http"
+    },
+    "rabbitmq": {
+        "queue_name": "newResourceQueue",
+        "host": "localhost",
+        "username": "root",
+        "password": "112223334",
+        "port": "5673",
+        "durable": true,
+        "auto_ack": false,
+        "prefetch_count": 1
+    },
+    "neo4j": {
+        "uri": "bolt://localhost:7687",
+        "username": "neo4j",
+        "password": "123123"
+    }
+}
