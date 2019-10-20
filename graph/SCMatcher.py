@@ -4,7 +4,7 @@ import numpy as np
 import Levenshtein
 from functools import cmp_to_key
 import copy
-from neo4jdb.Neo4jUtil import NeoUtil
+from neo4jdb.Neo4jUtil import neo_util
 
 
 class SCMatcher:
@@ -24,7 +24,7 @@ class SCMatcher:
         schema_local: dict # local cache
     """
 
-    def __init__(self, gd_nodes, gq, rs, K=1, st=0.7):
+    def __init__(self, gd_nodes, gq, rs, K=1, st=0.9):
         self.gq = gq
         self.gd_vnum = len(gd_nodes)
         self.gd_nodes = list(gd_nodes)
@@ -99,7 +99,7 @@ class SCMatcher:
         return sim
 
     def _match_struc_sim(self, match):
-        neo4j = NeoUtil()
+        neo4j = neo_util
         nmatch = {}
         for k in match:
             if match[k] is None:

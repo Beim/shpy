@@ -1,0 +1,42 @@
+{
+    "primary_label": "Person",
+    "extends": "",
+    "entity_schema": {
+        "type": "object",
+        "properties": {
+            "primary_label": {
+                "type": "string",
+                "pattern": "^Person$"
+            },
+            "property": {
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "type": "string",
+                        "attr_type": "text"
+                    },
+                    "gender": {
+                        "type": "string",
+                        "pattern": "(^男)|(^女$)",
+                        "attr_type": "categorical"
+                    },
+                    "born_place": {
+                        "type": "string",
+                        "attr_type": "text"
+                    }
+                },
+                "required": ["name"]
+            },
+            "related": {
+                "type": "object"
+            },
+            "related_from": {
+                "type": "object"
+            },
+            "related_to": {
+                "type": "object"
+            }
+        },
+        "required": ["primary_label", "property"]
+    }
+}

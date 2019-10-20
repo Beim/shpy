@@ -1,5 +1,5 @@
 import time
-from neo4jdb.Neo4jUtil import NeoUtil
+from neo4jdb.Neo4jUtil import neo_util
 from py2neo.data import Node, Relationship
 from neo4jdb.ExSubgraph import ExSubgraph
 from graph.SCMatcher import SCMatcher
@@ -22,9 +22,8 @@ class PutinController:
     NAME = "name"
 
 
-
     def __init__(self):
-        self.neoUtil = NeoUtil()
+        self.neoUtil = neo_util
         self.node_label_cache = NodeLabelCache(self.neoUtil)
         pass
 

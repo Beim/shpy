@@ -1,0 +1,40 @@
+2019-07-24 11:00:56.540  WARN 19224 --- [io-18080-exec-1] .m.m.a.ExceptionHandlerExceptionResolver : Resolved [org.apache.shiro.authz.UnauthenticatedException: Attempting to perform a user-only operation.  The current Subject is not a user (they haven't been authenticated or remembered from a previous login).  Access denied.]
+2019-07-24 11:01:01.438  INFO 19224 --- [io-18080-exec-4] c.i.s.m.controller.PattGenController     : createPruningGenerator, body: {"data":{"vrels":[],"labels":["Company","Person"],"rels":[{"symmetrical":false,"type":"founder","startLabels":["Company"],"transitive":false,"endLabels":["Person"]},{"symmetrical":false,"type":"cooperate","startLabels":["Company"],"transitive":false,"endLabels":["Company"]}]},"pruning":7}
+2019-07-24 11:01:01.541  INFO 19224 --- [io-18080-exec-6] c.i.s.m.controller.PattGenController     : getState
+2019-07-24 11:01:01.600  INFO 19224 --- [io-18080-exec-2] c.i.s.m.controller.PattGenController     : genCombination
+2019-07-24 11:01:02.548  INFO 19224 --- [io-18080-exec-2] c.i.s.m.entity.RelCombinePattern         : logPattern, round: 1, patternType: autoPruningExistence, hashCode: -1624906121, startRelType: cooperate, endRelType: cooperate
+2019-07-24 11:01:02.550  INFO 19224 --- [io-18080-exec-2] c.i.s.m.entity.RelCombinePattern         : logPattern, round: 1, patternType: autoPruningExistence, hashCode: -1624911881, startRelType: cooperate, endRelType: cooperate
+2019-07-24 11:01:02.551  INFO 19224 --- [io-18080-exec-2] c.i.s.m.entity.RelCombinePattern         : logPattern, round: 1, patternType: autoPruningExistence, hashCode: -1624911887, startRelType: cooperate, endRelType: cooperate
+2019-07-24 11:01:02.551  INFO 19224 --- [io-18080-exec-2] c.i.s.m.entity.RelCombinePattern         : logPattern, round: 1, patternType: autoPruningExistence, hashCode: 1822374777, startRelType: founder, endRelType: founder
+2019-07-24 11:01:02.552  INFO 19224 --- [io-18080-exec-2] c.i.s.m.entity.RelCombinePattern         : logPattern, round: 1, patternType: autoPruningExistence, hashCode: -194753646, startRelType: founder, endRelType: cooperate
+2019-07-24 11:01:02.552  INFO 19224 --- [io-18080-exec-2] c.i.s.m.entity.RelCombinePattern         : logPattern, round: 1, patternType: autoPruningExistence, hashCode: 392216536, startRelType: cooperate, endRelType: founder
+2019-07-24 11:01:02.554  INFO 19224 --- [io-18080-exec-2] c.i.s.m.entity.RelCombinePattern         : logPattern, round: 1, patternType: autoPruningExistence, hashCode: -1624906115, startRelType: cooperate, endRelType: cooperate
+2019-07-24 11:01:02.554  INFO 19224 --- [io-18080-exec-2] c.i.s.m.entity.RelCombinePattern         : logPattern, round: 1, patternType: autoPruningExistence, hashCode: -194753640, startRelType: founder, endRelType: cooperate
+2019-07-24 11:01:02.554  INFO 19224 --- [io-18080-exec-2] c.i.s.m.entity.RelCombinePattern         : logPattern, round: 1, patternType: autoPruningExistence, hashCode: 392222302, startRelType: cooperate, endRelType: founder
+2019-07-24 11:01:02.582  INFO 19224 --- [io-18080-exec-7] c.i.s.m.controller.PattGenController     : getState
+2019-07-24 11:01:06.808  INFO 19224 --- [io-18080-exec-9] c.i.s.m.controller.PattGenController     : filterMeaninglessAndLabel, body: {"data":[{"index":"0","type":"VREL","symmetrical":false,"transitive":false}]}
+2019-07-24 11:01:06.810  INFO 19224 --- [io-18080-exec-9] c.i.s.m.entity.RelCombinePattern         : logPattern, round: 1, patternType: manualLabel, hashCode: 1822380537, startRelType: founder, endRelType: founder
+2019-07-24 11:01:08.649  INFO 19224 --- [o-18080-exec-10] c.i.s.m.controller.PattGenController     : getState
+2019-07-24 11:01:08.668  INFO 19224 --- [io-18080-exec-5] c.i.s.m.controller.PattGenController     : genCombination
+2019-07-24 11:01:08.739  INFO 19224 --- [io-18080-exec-5] c.i.s.m.entity.RelCombinePattern         : logPattern, round: 2, patternType: autoPruningExistence, hashCode: 1799439826, startRelType: VREL, endRelType: cooperate
+2019-07-24 11:01:08.739  INFO 19224 --- [io-18080-exec-5] c.i.s.m.entity.RelCombinePattern         : logPattern, round: 2, patternType: autoPruningExistence, hashCode: -874088863, startRelType: VREL, endRelType: VREL
+2019-07-24 11:01:08.740  INFO 19224 --- [io-18080-exec-5] c.i.s.m.entity.RelCombinePattern         : logPattern, round: 2, patternType: autoPruningExistence, hashCode: -874094623, startRelType: VREL, endRelType: VREL
+2019-07-24 11:01:08.740  INFO 19224 --- [io-18080-exec-5] c.i.s.m.entity.RelCombinePattern         : logPattern, round: 2, patternType: autoPruningExistence, hashCode: 1799434054, startRelType: VREL, endRelType: cooperate
+2019-07-24 11:01:08.741  INFO 19224 --- [io-18080-exec-5] c.i.s.m.entity.RelCombinePattern         : logPattern, round: 2, patternType: autoPruningExistence, hashCode: -3467508, startRelType: cooperate, endRelType: VREL
+2019-07-24 11:01:08.742  INFO 19224 --- [io-18080-exec-5] c.i.s.m.entity.RelCombinePattern         : logPattern, round: 2, patternType: autoPruningExistence, hashCode: -3473268, startRelType: cooperate, endRelType: VREL
+2019-07-24 11:01:08.742  INFO 19224 --- [io-18080-exec-5] c.i.s.m.entity.RelCombinePattern         : logPattern, round: 2, patternType: autoPruningExistence, hashCode: -3467502, startRelType: cooperate, endRelType: VREL
+2019-07-24 11:01:08.742  INFO 19224 --- [io-18080-exec-5] c.i.s.m.entity.RelCombinePattern         : logPattern, round: 2, patternType: autoPruningExistence, hashCode: 1799439820, startRelType: VREL, endRelType: cooperate
+2019-07-24 11:01:08.743  INFO 19224 --- [io-18080-exec-5] c.i.s.m.entity.RelCombinePattern         : logPattern, round: 2, patternType: autoPruningExistence, hashCode: 1799434060, startRelType: VREL, endRelType: cooperate
+2019-07-24 11:01:08.743  INFO 19224 --- [io-18080-exec-5] c.i.s.m.entity.RelCombinePattern         : logPattern, round: 2, patternType: autoPruningExistence, hashCode: -3473274, startRelType: cooperate, endRelType: VREL
+2019-07-24 11:01:08.808  INFO 19224 --- [io-18080-exec-1] c.i.s.m.controller.PattGenController     : getState
+2019-07-24 11:01:10.751  INFO 19224 --- [io-18080-exec-3] c.i.s.m.controller.PattGenController     : filterMeaninglessAndLabel, body: {"data":[]}
+2019-07-24 11:01:10.753  INFO 19224 --- [io-18080-exec-3] c.i.s.m.entity.RelCombinePattern         : logPattern, round: 2, patternType: manualMeaninglessPattern, hashCode: -874088857, startRelType: VREL, endRelType: VREL
+2019-07-24 11:01:10.753  INFO 19224 --- [io-18080-exec-3] c.i.s.m.entity.RelCombinePattern         : logPattern, round: 2, patternType: manualMeaninglessPattern, hashCode: -478404819, startRelType: VREL, endRelType: founder
+2019-07-24 11:01:10.753  INFO 19224 --- [io-18080-exec-3] c.i.s.m.entity.RelCombinePattern         : logPattern, round: 2, patternType: manualMeaninglessPattern, hashCode: 1426684973, startRelType: founder, endRelType: VREL
+2019-07-24 11:01:10.753  INFO 19224 --- [io-18080-exec-3] c.i.s.m.entity.RelCombinePattern         : logPattern, round: 2, patternType: manualMeaninglessPattern, hashCode: -874094629, startRelType: VREL, endRelType: VREL
+2019-07-24 11:01:10.754  INFO 19224 --- [io-18080-exec-3] c.i.s.m.entity.RelCombinePattern         : logPattern, round: 2, patternType: manualMeaninglessPattern, hashCode: 1426684967, startRelType: founder, endRelType: VREL
+2019-07-24 11:01:10.754  INFO 19224 --- [io-18080-exec-3] c.i.s.m.entity.RelCombinePattern         : logPattern, round: 2, patternType: manualMeaninglessPattern, hashCode: -478399053, startRelType: VREL, endRelType: founder
+2019-07-24 11:01:10.802  INFO 19224 --- [io-18080-exec-4] c.i.s.m.controller.PattGenController     : getState
+2019-07-24 11:01:10.817  INFO 19224 --- [io-18080-exec-6] c.i.s.m.controller.PattGenController     : genCombination
+2019-07-24 11:01:10.824  INFO 19224 --- [io-18080-exec-2] c.i.s.m.controller.PattGenController     : getState
+2019-07-24 11:01:10.843  INFO 19224 --- [io-18080-exec-7] c.i.s.m.controller.PattGenController     : getCurrPattConfig

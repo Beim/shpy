@@ -1,0 +1,93 @@
+{
+    "primary_label": "专用宿主机资源",
+    "extends": "",
+    "entity_schema": {
+        "type": "object",
+        "properties": {
+            "primary_label": {
+                "type": "string",
+                "pattern": "^专用宿主机资源$"
+            },
+            "new": {
+                "type": "integer"
+            },
+            "property": {
+                "type": "object",
+                "properties": {
+                    "名": {
+                        "type": "array",
+                        "attr_type": "text_alias",
+                        "items": {
+                            "type": "string",
+                            "minLength": 1
+                        }
+                    },
+                    "CPU": {
+                        "type": "string",
+                        "attr_type": "text",
+                        "minLength": 1
+                    },
+                    "硬盘容量": {
+                        "type": "string",
+                        "attr_type": "text",
+                        "minLength": 1
+                    },
+                    "硬盘类型": {
+                        "type": "string",
+                        "attr_type": "text",
+                        "minLength": 1
+                    },
+                    "内存": {
+                        "type": "string",
+                        "attr_type": "text",
+                        "minLength": 1
+                    },
+                    "官网链接": {
+                        "type": "string",
+                        "attr_type": "text",
+                        "minLength": 1
+                    }
+
+                },
+                "required": ["名", "CPU", "内存", "官网链接"]
+            },
+            "related_from": {
+                "type": "object",
+                "properties": {
+                    "有资源": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "primary_label": {
+                                    "type": "string",
+                                    "pattern": "^云平台$"
+                                }
+                            },
+                            "required": ["primary_label"]
+                        }
+                    }
+                }
+            },
+            "related_to": {
+                "type": "object",
+                "properties": {
+                    "产品类型": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "primary_label": {
+                                    "type": "string",
+                                    "pattern": "^云产品$"
+                                }
+                            },
+                            "required": ["primary_label"]
+                        }
+                    }
+                }
+            }
+        },
+        "required": ["primary_label", "property"]
+    }
+}

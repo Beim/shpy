@@ -1,0 +1,1601 @@
+{
+    "vrels": [],
+    "labels": [
+        "娱乐",
+        "人物",
+        "出版物",
+        "学科",
+        "中国文学",
+        "80年代演员",
+        "娱乐作品",
+        "字词",
+        "地点",
+        "冒险游戏",
+        "外国大学",
+        "公文",
+        "literal",
+        "科学",
+        "动画作品",
+        "文化"
+    ],
+    "rels": [
+        {
+            "symmetrical": false,
+            "type": "在线播放平台",
+            "startLabels": [
+                "娱乐",
+                "literal",
+                "娱乐作品"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "水天使",
+            "startLabels": [
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "成立时间",
+            "startLabels": [
+                "公文"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "其他使徒的",
+            "startLabels": [
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "沸点",
+            "startLabels": [
+                "学科"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "武器",
+            "startLabels": [
+                "人物",
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "前男友",
+            "startLabels": [
+                "人物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "出版周期",
+            "startLabels": [
+                "出版物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "制片地区",
+            "startLabels": [
+                "娱乐",
+                "娱乐作品",
+                "literal",
+                "动画作品",
+                "文化"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "发行商",
+            "startLabels": [
+                "娱乐作品"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "编辑单位",
+            "startLabels": [
+                "出版物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "日文名",
+            "startLabels": [
+                "娱乐"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "毕业院校",
+            "startLabels": [
+                "人物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "位置",
+            "startLabels": [
+                "地点"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "上映时间",
+            "startLabels": [
+                "文化",
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "中文名称",
+            "startLabels": [
+                "娱乐",
+                "出版物",
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "娱乐",
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "主要成就",
+            "startLabels": [
+                "人物",
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "注音",
+            "startLabels": [
+                "字词"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "书名",
+            "startLabels": [
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "歌曲原唱",
+            "startLabels": [
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "经纪公司",
+            "startLabels": [
+                "人物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "拍摄日期",
+            "startLabels": [
+                "文化"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "所属运动队",
+            "startLabels": [
+                "人物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "配音",
+            "startLabels": [
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "分类",
+            "startLabels": [
+                "人物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "对白语言",
+            "startLabels": [
+                "娱乐"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "制片人",
+            "startLabels": [
+                "娱乐",
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "国家地区",
+            "startLabels": [
+                "娱乐"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "导演",
+            "startLabels": [
+                "娱乐",
+                "文化",
+                "literal",
+                "娱乐作品"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "种族",
+            "startLabels": [
+                "娱乐"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "粤语名称",
+            "startLabels": [
+                "人物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "连载网站",
+            "startLabels": [
+                "中国文学"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "原版名称",
+            "startLabels": [
+                "动画作品"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "研究方向",
+            "startLabels": [
+                "人物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "核心",
+            "startLabels": [
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "字码2",
+            "startLabels": [
+                "字词"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "出版社",
+            "startLabels": [
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "国内刊号",
+            "startLabels": [
+                "出版物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "出品时间",
+            "startLabels": [
+                "娱乐",
+                "文化",
+                "娱乐作品"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "爱好",
+            "startLabels": [
+                "人物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "演出时间",
+            "startLabels": [
+                "娱乐"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "部首",
+            "startLabels": [
+                "字词"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "用语出处",
+            "startLabels": [
+                "文化"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "黄金代码",
+            "startLabels": [
+                "学科"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "出生日期",
+            "startLabels": [
+                "人物",
+                "80年代演员"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "语言",
+            "startLabels": [
+                "人物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "字级",
+            "startLabels": [
+                "字词"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "色彩",
+            "startLabels": [
+                "娱乐",
+                "文化",
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "父亲",
+            "startLabels": [
+                "人物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "其他名称",
+            "startLabels": [
+                "literal",
+                "动画作品"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "别名",
+            "startLabels": [
+                "人物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "密度",
+            "startLabels": [
+                "学科"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "惯用脚",
+            "startLabels": [
+                "人物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "好友",
+            "startLabels": [
+                "人物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "小说进度",
+            "startLabels": [
+                "中国文学"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "游戏平台",
+            "startLabels": [
+                "娱乐作品"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "时间",
+            "startLabels": [
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "名人名言",
+            "startLabels": [
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "字码1",
+            "startLabels": [
+                "字词"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "原名",
+            "startLabels": [
+                "人物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "专业方向",
+            "startLabels": [
+                "人物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "登场作品",
+            "startLabels": [
+                "人物",
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "出品方",
+            "startLabels": [
+                "动画作品"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "作者",
+            "startLabels": [
+                "中国文学",
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "母星",
+            "startLabels": [
+                "人物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "体重",
+            "startLabels": [
+                "人物",
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "人员伤亡",
+            "startLabels": [
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "姐姐",
+            "startLabels": [
+                "人物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "游戏类型",
+            "startLabels": [
+                "冒险游戏"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "出品公司",
+            "startLabels": [
+                "娱乐",
+                "文化",
+                "literal",
+                "娱乐作品"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "弟弟",
+            "startLabels": [
+                "人物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "ISBN",
+            "startLabels": [
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "其它译名",
+            "startLabels": [
+                "娱乐",
+                "文化",
+                "娱乐作品"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "外文名称",
+            "startLabels": [
+                "出版物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "学历",
+            "startLabels": [
+                "人物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "片长",
+            "startLabels": [
+                "娱乐",
+                "文化",
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "每集长度",
+            "startLabels": [
+                "娱乐",
+                "文化",
+                "literal",
+                "娱乐作品"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "血型",
+            "startLabels": [
+                "人物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "职能",
+            "startLabels": [
+                "公文"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "主持人",
+            "startLabels": [
+                "娱乐"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "引擎",
+            "startLabels": [
+                "冒险游戏"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "电影版",
+            "startLabels": [
+                "娱乐作品"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "职业",
+            "startLabels": [
+                "人物",
+                "80年代演员",
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "平水韵",
+            "startLabels": [
+                "字词"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "熔点",
+            "startLabels": [
+                "学科"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "星座",
+            "startLabels": [
+                "人物",
+                "80年代演员"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "运动项目",
+            "startLabels": [
+                "人物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "颜色",
+            "startLabels": [
+                "学科",
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "发行公司",
+            "startLabels": [
+                "娱乐",
+                "文化"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "身高",
+            "startLabels": [
+                "人物",
+                "80年代演员",
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "连载平台",
+            "startLabels": [
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "国际刊号",
+            "startLabels": [
+                "出版物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "游戏大小",
+            "startLabels": [
+                "冒险游戏"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "上映日期",
+            "startLabels": [
+                "动画作品"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "现居住地",
+            "startLabels": [
+                "人物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "专业特点",
+            "startLabels": [
+                "人物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "性别",
+            "startLabels": [
+                "人物",
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "表演特长",
+            "startLabels": [
+                "人物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "学徒",
+            "startLabels": [
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "故乡",
+            "startLabels": [
+                "人物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "信仰",
+            "startLabels": [
+                "人物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "发行日期",
+            "startLabels": [
+                "娱乐作品"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "第一季集数",
+            "startLabels": [
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "哥哥",
+            "startLabels": [
+                "人物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "简介",
+            "startLabels": [
+                "科学"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "拍摄地点",
+            "startLabels": [
+                "文化",
+                "娱乐作品"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "冠名商",
+            "startLabels": [
+                "娱乐"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "首播时间",
+            "startLabels": [
+                "娱乐",
+                "文化",
+                "娱乐作品"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "外文名",
+            "startLabels": [
+                "娱乐",
+                "人物",
+                "80年代演员",
+                "学科",
+                "娱乐作品",
+                "冒险游戏",
+                "literal",
+                "文化"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "人物",
+                "80年代演员",
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "所在省州",
+            "startLabels": [
+                "外国大学"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "开发商",
+            "startLabels": [
+                "娱乐作品"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "出生地",
+            "startLabels": [
+                "人物",
+                "80年代演员"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "饰演",
+            "startLabels": [
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "发行时间",
+            "startLabels": [
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "职务",
+            "startLabels": [
+                "人物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "笔画",
+            "startLabels": [
+                "字词"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "原子量",
+            "startLabels": [
+                "学科"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "imdb编码",
+            "startLabels": [
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "类型",
+            "startLabels": [
+                "娱乐",
+                "娱乐作品",
+                "literal",
+                "动画作品",
+                "文化"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "中文名",
+            "startLabels": [
+                "娱乐",
+                "人物",
+                "中国文学",
+                "80年代演员",
+                "学科",
+                "娱乐作品",
+                "字词",
+                "地点",
+                "冒险游戏",
+                "外国大学",
+                "公文",
+                "literal",
+                "科学",
+                "动画作品",
+                "文化"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "娱乐",
+                "人物",
+                "中国文学",
+                "字词",
+                "外国大学",
+                "公文",
+                "科学",
+                "literal",
+                "动画作品",
+                "文化"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "主演",
+            "startLabels": [
+                "娱乐",
+                "文化",
+                "literal",
+                "娱乐作品"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "物质",
+            "startLabels": [
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "主要奖项",
+            "startLabels": [
+                "娱乐",
+                "人物",
+                "娱乐作品"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "笔顺",
+            "startLabels": [
+                "字词"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "出生",
+            "startLabels": [
+                "人物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "主办单位",
+            "startLabels": [
+                "出版物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "民族",
+            "startLabels": [
+                "人物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "国籍",
+            "startLabels": [
+                "人物",
+                "80年代演员"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "平台",
+            "startLabels": [
+                "娱乐"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "学位学历",
+            "startLabels": [
+                "人物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "地点",
+            "startLabels": [
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "编剧",
+            "startLabels": [
+                "娱乐",
+                "文化",
+                "literal"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "分级",
+            "startLabels": [
+                "娱乐",
+                "文化"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "代表作品",
+            "startLabels": [
+                "人物",
+                "80年代演员"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "集数",
+            "startLabels": [
+                "文化"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        }
+    ]
+}

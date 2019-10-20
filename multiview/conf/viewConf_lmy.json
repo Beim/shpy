@@ -1,0 +1,109 @@
+{
+    "vrels": [
+        {
+            "symmetrical": false,
+            "type": "A",
+            "transitive": false,
+            "rels": [
+                {
+                    "inverse": false,
+                    "startLabel": "Mention",
+                    "type": "Mention_TO",
+                    "endLabel": "Entity"
+                },
+                {
+                    "inverse": true,
+                    "startLabel": "Mention",
+                    "type": "Mention_TO",
+                    "endLabel": "Entity"
+                }
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "B",
+            "transitive": false,
+            "rels": [
+                {
+                    "inverse": true,
+                    "startLabel": "Event",
+                    "type": "has_actor",
+                    "endLabel": "Mention"
+                },
+                {
+                    "inverse": false,
+                    "startLabel": "Event",
+                    "type": "has_actor",
+                    "endLabel": "Mention"
+                }
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "C",
+            "transitive": false,
+            "rels": [
+                {
+                    "inverse": false,
+                    "startLabel": "Event",
+                    "type": "has_actor",
+                    "endLabel": "Mention"
+                },
+                {
+                    "inverse": false,
+                    "startLabel": "Mention",
+                    "type": "Mention_TO",
+                    "endLabel": "Entity"
+                }
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "C",
+            "transitive": false,
+            "rels": [
+                {
+                    "inverse": true,
+                    "startLabel": "Mention",
+                    "type": "Mention_TO",
+                    "endLabel": "Entity"
+                },
+                {
+                    "inverse": true,
+                    "startLabel": "Event",
+                    "type": "has_actor",
+                    "endLabel": "Mention"
+                }
+            ]
+        }
+    ],
+    "labels": [
+        "Entity",
+        "Mention",
+        "Event"
+    ],
+    "rels": [
+        {
+            "symmetrical": false,
+            "type": "Mention_TO",
+            "startLabels": [
+                "Mention"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Entity"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "has_actor",
+            "startLabels": [
+                "Event"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Mention"
+            ]
+        }
+    ]
+}

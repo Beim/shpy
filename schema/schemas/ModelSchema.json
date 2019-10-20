@@ -1,0 +1,113 @@
+{
+    "type": "object",
+    "properties": {
+        "primary_label": {
+            "type": "string"
+        },
+        "extends": {
+            "type": "string"
+        },
+        "entity_schema": {
+            "type": "object",
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "pattern": "^object$"
+                },
+                "properties": {
+                    "type": "object",
+                    "properties": {
+                        "primary_label": {
+                            "type": "object",
+                            "properties": {
+                                "type": {
+                                    "type": "string",
+                                    "pattern": "^string$"
+                                },
+                                "pattern": {
+                                    "type": "string"
+                                }
+                            },
+                            "required": [
+                                "type",
+                                "pattern"
+                            ]
+                        },
+                        "new": {
+                            "type": "object",
+                            "properties": {
+                                "type": {
+                                    "type": "string",
+                                    "pattern": "^integer$"
+                                }
+                            }
+                        },
+                        "property": {
+                            "type": "object",
+                            "properties": {
+                                "type": {
+                                    "type": "string",
+                                    "pattern": "^object$"
+                                },
+                                "properties": {
+                                    "type": "object"
+                                },
+                                "required": {
+                                    "type": "array",
+                                    "minItems": 1
+                                }
+                            },
+                            "required": [
+                                "type",
+                                "properties",
+                                "required"
+                            ]
+                        },
+                        "related": {
+                            "type": "object",
+                            "properties": {
+                                "type": {
+                                    "type": "string",
+                                    "pattern": "^object$"
+                                }
+                            },
+                            "required": ["type"]
+                        },
+                        "related_from": {
+                            "type": "object",
+                            "properties": {
+                                "type": {
+                                    "type": "string",
+                                    "pattern": "^object$"
+                                }
+                            },
+                            "required": ["type"]
+                        },
+                        "related_to": {
+                            "type": "object",
+                            "properties": {
+                                "type": {
+                                    "type": "string",
+                                    "pattern": "^object$"
+                                }
+                            },
+                            "required": ["type"]
+                        }
+                    },
+                    "required": [
+                        "primary_label",
+                        "property",
+                        "related",
+                        "related_from",
+                        "related_to"
+                    ]
+                },
+                "required": {
+                    "type": "array"
+                }
+            },
+            "required": ["type", "properties", "required"]
+        }
+    },
+    "required": ["primary_label", "extends", "entity_schema"]
+}

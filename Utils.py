@@ -2,6 +2,7 @@ import requests
 import json
 import warnings
 import functools
+import time
 
 from config_loader import config_loader
 
@@ -18,6 +19,11 @@ class RequestUtils:
         url = '%s://%s:%s/%s' % (self.protocol, self.host, self.port, path)
         data_str = json.dumps(data, ensure_ascii=False).encode('utf-8')
         res = requests.post(url, data=data_str, cookies=cookies)
+        return res
+
+    def get(self, path, params, cookies=None):
+        url = '%s://%s:%s/%s' % (self.protocol, self.host, self.port, path)
+        res = requests.get(url, params=params, cookies=cookies)
         return res
 
 
@@ -37,6 +43,26 @@ def deprecated(func):
         warnings.simplefilter('default', DeprecationWarning)  # reset filter
         return func(*args, **kwargs)
     return new_func
+
+
+class TimeLogger:
+
+    last_time = None
+    begin_time = None
+
+    def begin(self):
+        self.begin_time = time.time()
+        self.last_time = self.begin_time
+
+    def log(self, s):
+        curr_time = time.time()
+        print('%s: %s' % (s, (curr_time - self.last_time)))
+        self.last_time = curr_time
+
+    def total(self, s):
+        curr_time = time.time()
+        print('%s: %s' % (s, (curr_time - self.begin_time)))
+
 
 if __name__ == '__main__':
     pass

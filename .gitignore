@@ -1,0 +1,5 @@
+.idea/
+__pycache__/
+data/*
+config-dev.json
+config-prod.json

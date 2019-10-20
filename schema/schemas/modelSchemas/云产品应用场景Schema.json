@@ -1,0 +1,56 @@
+{
+    "primary_label": "云产品应用场景",
+    "extends": "",
+    "entity_schema": {
+        "type": "object",
+        "properties": {
+            "primary_label": {
+                "type": "string",
+                "pattern": "^云产品应用场景$"
+            },
+            "new": {
+                "type": "integer"
+            },
+            "property": {
+                "type": "object",
+                "properties": {
+                    "名": {
+                        "type": "array",
+                        "attr_type": "text_alias",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "简介": {
+                        "type": "string",
+                        "attr_type": "text"
+                    },
+                    "业务类型": {
+                        "type": "string",
+                        "attr_type": "text"
+                    }
+                },
+                "required": ["名"]
+            },
+            "related_from": {
+                "type": "object",
+                "properties": {
+                    "有": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "primary_label": {
+                                    "type": "string",
+                                    "pattern": "^云产品$"
+                                }
+                            },
+                            "required": ["primary_label"]
+                        }
+                    }
+                }
+            }
+        },
+        "required": ["primary_label", "property"]
+    }
+}

@@ -1,0 +1,32 @@
+{
+    "vrels": [
+    ],
+    "labels": [
+        "Company",
+        "Person"
+    ],
+    "rels": [
+        {
+            "symmetrical": false,
+            "type": "founder",
+            "startLabels": [
+                "Company"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Person"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "cooperate",
+            "startLabels": [
+                "Company"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Company"
+            ]
+        }
+    ]
+}

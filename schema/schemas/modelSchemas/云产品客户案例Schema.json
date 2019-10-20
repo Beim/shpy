@@ -1,0 +1,64 @@
+{
+    "primary_label": "云产品客户案例",
+    "extends": "",
+    "entity_schema": {
+        "type": "object",
+        "properties": {
+            "primary_label": {
+                "type": "string",
+                "pattern": "^云产品客户案例$"
+            },
+            "new": {
+                "type": "integer"
+            },
+            "property": {
+                "type": "object",
+                "properties": {
+                    "名": {
+                        "type": "array",
+                        "attr_type": "text_alias",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    "领域": {
+                        "type": "string",
+                        "attr_type": "text"
+                    },
+                    "产品类型": {
+                        "type": "string",
+                        "attr_type": "text"
+                    },
+                    "官网链接": {
+                        "type": "string",
+                        "attr_type": "text"
+                    },
+                    "简介": {
+                        "type": "string",
+                        "attr_type": "text"
+                    }
+                },
+                "required": ["名"]
+            },
+            "related_to": {
+                "type": "object",
+                "properties": {
+                    "使用": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "primary_label": {
+                                    "type": "string",
+                                    "pattern": "^云产品$"
+                                }
+                            },
+                            "required": ["primary_label"]
+                        }
+                    }
+                }
+            }
+        },
+        "required": ["primary_label", "property"]
+    }
+}

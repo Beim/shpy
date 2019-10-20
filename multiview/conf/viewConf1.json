@@ -1,0 +1,51 @@
+{
+    "vrels": [
+        {
+            "symmetrical": true,
+            "type": "VREL",
+            "transitive": true,
+            "rels": [
+                {
+                    "inverse": false,
+                    "startLabel": "Company",
+                    "type": "founder",
+                    "endLabel": "Person"
+                },
+                {
+                    "inverse": true,
+                    "startLabel": "Person",
+                    "type": "founder",
+                    "endLabel": "Company"
+                }
+            ]
+        }
+    ],
+    "labels": [
+        "Company",
+        "Person"
+    ],
+    "rels": [
+        {
+            "symmetrical": false,
+            "type": "founder",
+            "startLabels": [
+                "Company"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Person"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "cooperate",
+            "startLabels": [
+                "Company"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Company"
+            ]
+        }
+    ]
+}

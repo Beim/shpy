@@ -1,0 +1,371 @@
+{
+    "vrels": [],
+    "labels": [
+        "Resource"
+    ],
+    "rels": [
+        {
+            "symmetrical": false,
+            "type": "isLeaderOf",
+            "startLabels": [
+                "Resource"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Resource"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "isLocatedIn",
+            "startLabels": [
+                "Resource"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Resource"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "isAffiliatedTo",
+            "startLabels": [
+                "Resource"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Resource"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "owns",
+            "startLabels": [
+                "Resource"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Resource"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "hasGender",
+            "startLabels": [
+                "Resource"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Resource"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "wasBornIn",
+            "startLabels": [
+                "Resource"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Resource"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "isCitizenOf",
+            "startLabels": [
+                "Resource"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Resource"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "created",
+            "startLabels": [
+                "Resource"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Resource"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "diedIn",
+            "startLabels": [
+                "Resource"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Resource"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "happenedIn",
+            "startLabels": [
+                "Resource"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Resource"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "hasCapital",
+            "startLabels": [
+                "Resource"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Resource"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "graduatedFrom",
+            "startLabels": [
+                "Resource"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Resource"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "isPoliticianOf",
+            "startLabels": [
+                "Resource"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Resource"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "worksAt",
+            "startLabels": [
+                "Resource"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Resource"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "participatedIn",
+            "startLabels": [
+                "Resource"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Resource"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "hasOfficialLanguage",
+            "startLabels": [
+                "Resource"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Resource"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "imports",
+            "startLabels": [
+                "Resource"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Resource"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "hasNeighbor",
+            "startLabels": [
+                "Resource"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Resource"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "hasCurrency",
+            "startLabels": [
+                "Resource"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Resource"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "exports",
+            "startLabels": [
+                "Resource"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Resource"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "influences",
+            "startLabels": [
+                "Resource"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Resource"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "playsFor",
+            "startLabels": [
+                "Resource"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Resource"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "hasChild",
+            "startLabels": [
+                "Resource"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Resource"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "isMarriedTo",
+            "startLabels": [
+                "Resource"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Resource"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "actedIn",
+            "startLabels": [
+                "Resource"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Resource"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "directed",
+            "startLabels": [
+                "Resource"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Resource"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "hasWonPrize",
+            "startLabels": [
+                "Resource"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Resource"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "isConnectedTo",
+            "startLabels": [
+                "Resource"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Resource"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "isInterestedIn",
+            "startLabels": [
+                "Resource"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Resource"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "hasMusicalRole",
+            "startLabels": [
+                "Resource"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Resource"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "dealsWith",
+            "startLabels": [
+                "Resource"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Resource"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "wroteMusicFor",
+            "startLabels": [
+                "Resource"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Resource"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "edited",
+            "startLabels": [
+                "Resource"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "Resource"
+            ]
+        }
+    ]
+}

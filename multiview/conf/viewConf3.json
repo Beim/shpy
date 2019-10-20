@@ -1,0 +1,32 @@
+{
+    "vrels": [
+    ],
+    "labels": [
+        "人物",
+        "literal"
+    ],
+    "rels": [
+        {
+            "symmetrical": false,
+            "type": "分类",
+            "startLabels": [
+                "人物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        },
+        {
+            "symmetrical": false,
+            "type": "地区",
+            "startLabels": [
+                "人物"
+            ],
+            "transitive": false,
+            "endLabels": [
+                "literal"
+            ]
+        }
+    ]
+}

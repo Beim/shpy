@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package com.ices.sh.multiview.rpc;
+
+option java_package = "com.ices.sh.multiview.rpc";
+option java_outer_classname = "MultiviewRpc";
+
+service MultiViewService {
+    rpc GenGraph(GenGraphConfig) returns (Result);
+    rpc GenPatternExist(GenPattern) returns (Result);
+    rpc GenRelationshipFrequency(GenRelationship) returns (Double);
+}
+
+message GenGraphConfig {
+    string lastPattConfig = 1;
+    string currPattConfig = 2;
+}
+
+message Result {
+    bool ok = 1;
+}
+
+message GenPattern {
+    GenRelationship startRel = 1;
+    bool startInverse = 2;
+    GenRelationship endRel = 3;
+    bool endInverse = 4;
+    bool isFirstInterval = 5;
+}
+
+message GenRelationship {
+    string startLabel = 1;
+    string rel = 2;
+    string endLabel = 3;
+}
+
+message Double {
+    double value = 1;
+}
+
