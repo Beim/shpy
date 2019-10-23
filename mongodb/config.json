@@ -1,9 +1,0 @@
-{
-    "db": {
-        "host": "119.29.160.85",
-        "port": 27017,
-        "database": "servicehouse",
-        "username": "user",
-        "password": "SERVICEbeim945"
-    }
-}

@@ -4,9 +4,7 @@ import numpy as np
 from functools import cmp_to_key
 
 from neo4jdb.Neo4jUtil import NeoUtil
-from Utils import TimeLogger
 
-time_logger = TimeLogger()
 
 with open('./conf/neo4jConf.json', 'r') as f:
     neo4j_conf = json.load(f)
@@ -690,19 +688,3 @@ def test6():
 
 if __name__ == '__main__':
     test6()
-
-
-
-    # source_neo4j = neo_util
-    # target_neo4j = NeoUtil("bolt://localhost:7687", "neo4j", "123123")
-    #
-    # time_logger.begin()
-    # view_creator = ViewCreator(source_neo4j, target_neo4j)
-    # view_creator.load_nodes(viewConf['label'])
-    # time_logger.log('load_nodes')
-    #
-    # view_creator.load_rels(viewConf['relDef'])
-    # time_logger.log('load_rels')
-    #
-    # view_creator.load_vrels(viewConf['vrelDef'])
-    # time_logger.log('total')
