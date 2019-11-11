@@ -51,11 +51,15 @@ class ResourceQueueReceiver:
         :param body:
         :return:
         """
-        data = json.loads(body, encoding='utf-8')
-        print(data)
-        self.p_controller.putin(data)
+        # {'gid': 1, 'data': [{'name': 'yase'}], 'host': '119.29.160.85', 'boltport': '32858'}
+        info = json.loads(body, encoding='utf-8')
+        print(info)
+        gid = info['gid']
+        neo4j_host = info['host']
+        neo4j_bolt_port = info['boltport']
+        data = info['data']
+        self.p_controller.post(gid, 'bolt://%s:%s' % (neo4j_host, neo4j_bolt_port), data)
         try:
-
             # 确认，返回ack
             ch.basic_ack(delivery_tag=method.delivery_tag)
             print('ack', data)

@@ -10,7 +10,7 @@ class GraphService:
     RANGE = "range"
 
     @staticmethod
-    def get_class_info(class_relative_uri_list):
+    def get_class_info(gid: int, class_relative_uri_list: list):
         """
         获取class 的信息
         example:
@@ -47,6 +47,7 @@ class GraphService:
         :return:
         """
         data = {
+            'gid': gid,
             'classRelativeUriList': class_relative_uri_list
         }
         res = json.loads(request_utils.post('schema/classInfo', data).text)

@@ -1,4 +1,4 @@
-from neo4jdb.Neo4jUtil import neo_util
+from neo4jdb.Neo4jUtil import neo_util, NeoUtil
 from py2neo.data import Node, Relationship
 from neo4jdb.ExSubgraph import ExSubgraph
 from graph.SCMatcher import SCMatcher
@@ -8,6 +8,143 @@ import jieba
 
 KEY_NODE = 'node'
 KEY_REL = 'rel'
+
+class NodeLabelCache:
+    """
+
+
+    Attributes:
+        neo_util: Neo4jUtil
+        node_label_map: {
+            [label_name]: {
+                hit: int,
+                nodes: set()
+            },
+            ...
+        }
+    """
+
+    HIT = 'hit'
+    NODES = 'nodes'
+    MIN_HIT = -100
+
+    step = 2000
+    node_label_map = {}
+    updated_labels = set()
+
+    def __init__(self, neo_util):
+        self.neo_util = neo_util
+
+    def fetch_node_sets(self, labels):
+        """
+        从缓存获取labels 对应的nodes
+        :param labels:
+        :return:
+        """
+        node_sets = set()
+        for label in labels:
+            node_sets.update(self._fetch_node_set(label))
+        return node_sets
+
+    def _fetch_node_set(self, label):
+        """
+        从缓存获取nodes，若不存在与缓存则从db 获取
+        :param label:
+        :return: set
+        """
+        if label not in self.node_label_map:
+            self._load_node_set_from_db(label)
+        node_set = self.node_label_map[label][self.NODES]
+        self.node_label_map[label][self.HIT] += 1
+        return node_set
+
+    def _clear_cache(self):
+        """
+        清除缓存
+        所有label 的hit -= 1
+        hit < MIN_HIT 的label 清除，即最近-MIN_HIT次未命中
+        :return: None
+        """
+        for label in self.node_label_map:
+            node_label_obj = self.node_label_map[label]
+            node_label_obj[self.HIT] -= 1
+            if node_label_obj[self.HIT] < self.MIN_HIT:
+                del self.node_label_map[label]
+
+    def _update_cached_node_set(self, label):
+        """
+        更新label 对应的node 缓存（在添加了新节点以后执行）
+        :param label:
+        :return: None
+        """
+        if label not in self.node_label_map:
+            return
+        node_label_obj = self.node_label_map[label]
+        count = len(node_label_obj[self.NODES])
+        new_added_node_set = self._read_node_set_from_db_idx(label, count)
+        node_label_obj[self.NODES].update(new_added_node_set)
+
+    def add_updated_labels(self, labels):
+        """
+        添加更新过的label
+        :param label:
+        :return:
+        """
+        self.updated_labels.update(labels)
+
+    def _clear_updated_label(self):
+        self.updated_labels.clear()
+
+    def update_cache(self):
+        """
+        更新缓存，根据已记录的更新的标签
+        :return:
+        """
+        for label in self.updated_labels:
+            self._update_cached_node_set(label)
+        self._clear_updated_label()
+        try:
+            self._clear_cache()
+        except Exception as e:
+            print(e)
+
+    def _read_node_set_from_db_idx(self, label, idx=0):
+        """
+        从neo4jdb 读入对应标签的所有node，以idx 作为起始
+        :param label:
+        :param idx:
+        :return: set
+        """
+        node_set = set()
+        step = self.step
+        cursor = self.neo_util.matcher.match(label)
+        total = len(cursor)
+        while idx < total:
+            r = cursor.limit(step).skip(idx)
+            node_set.update(r)
+            idx += step
+        return node_set
+
+    def _load_node_set_from_db(self, label):
+        """
+        从neo4jdb 读入对应标签的所有node
+        :param label:
+        :return: None
+        """
+        node_set = set()
+        step = self.step
+        cursor = self.neo_util.matcher.match(label)
+        total = len(cursor)
+        idx = 0
+        while idx < total:
+            r = cursor.limit(step).skip(idx)
+            node_set.update(r)
+            idx += step
+        self.node_label_map[label] = {
+            self.HIT: 0,
+            self.NODES: node_set
+        }
+
 
 class PutinController:
     """
@@ -20,30 +157,39 @@ class PutinController:
     # entity 必须的属性
     NAME = "name"
 
-
     def __init__(self):
-        self.neoUtil = neo_util
-        self.node_label_cache = NodeLabelCache(self.neoUtil)
-        pass
+        self.neo_util_map = {}
+        self.node_label_cache_map = {}
 
-    def putin(self, entity_arr):
+    def post(self, gid: int, uri: str, entity_arr: list):
         """
-        加入entity
-        :param entity: JSONObject
+        添加entity 到db
+        :param gid: 1
+        :param uri: bolt://localhost:7687
+        :param entity_arr:
         :return:
         """
-        gq = self.trans_entity_arr_to_graph(entity_arr)
-        gd_nodes = self.node_label_cache.fetch_node_sets(gq.subgraph.labels)
+        if gid not in self.neo_util_map:
+            self.neo_util_map[gid] = NeoUtil(uri)
+            self.node_label_cache_map[gid] = NodeLabelCache(self.neo_util_map[gid])
+        gq = self.trans_entity_arr_to_graph(gid, entity_arr)
+        gd_nodes = self.node_label_cache(gid).fetch_node_sets(gq.subgraph.labels)
         sc_matcher = SCMatcher(gd_nodes, gq, rs=0, K=3, st=0.9)
         match = sc_matcher.run()
         # 更新图
-        ng = self.update_data_graph(gq, match)
+        ng = self.update_data_graph(gid, gq, match)
         # 补充已有节点的属性
-        self.neoUtil.graph.push(ng.subgraph)
+        self.neo_util(gid).graph.push(ng.subgraph)
         # 添加新属性与关系
-        self.neoUtil.graph.create(ng.subgraph)
+        self.neo_util(gid).graph.create(ng.subgraph)
         # 更新缓存
-        self.node_label_cache.update_cache()
+        self.node_label_cache(gid).update_cache()
+
+    def neo_util(self, gid: int) -> NeoUtil:
+        return self.neo_util_map[gid]
+
+    def node_label_cache(self, gid) -> NodeLabelCache:
+        return self.node_label_cache_map[gid]
 
     @deprecated
     def _print_match(self, match):
@@ -60,7 +206,7 @@ class PutinController:
             else:
                 print('d[%s] ' % dn.identity, dn.labels, dict(dn), '\n')
 
-    def update_data_graph(self, gq, match):
+    def update_data_graph(self, gid: int, gq, match):
         """
         根据匹配关系更新图数据库，返回改动后的数据子图
         :param gq: ExSubgraph 查询子图
@@ -74,7 +220,7 @@ class PutinController:
             if node_d is None:
                 match[node_q] = node_q
                 ng.add_node(node_q)
-                self.node_label_cache.add_updated_labels(node_q.labels)
+                self.node_label_cache(gid).add_updated_labels(node_q.labels)
             else:
                 prop_q = dict(node_q)
                 for k in prop_q:
@@ -250,7 +396,7 @@ class PutinController:
             KEY_REL: new_rel
     }
 
-    def trans_entity_arr_to_graph(self, entity_arr):
+    def trans_entity_arr_to_graph(self, gid: int, entity_arr: list):
         """
         将entity 数组转换为ExSubgraph
         :param entityArr:
@@ -260,7 +406,7 @@ class PutinController:
         for entity in entity_arr:
             class_relative_uri_list.append(entity[self.LABEL])
         schema_controller = SchemaController()
-        schema_controller.add_class_list(class_relative_uri_list)
+        schema_controller.add_class_list(gid, class_relative_uri_list)
         subgraph = ExSubgraph()
         while True:
             has_change = False
@@ -315,8 +461,8 @@ class SchemaController:
     """
     schema = {}
 
-    def add_class_list(self, class_relative_uri_list):
-        class_info = GraphService.get_class_info(class_relative_uri_list)
+    def add_class_list(self, gid: int, class_relative_uri_list: list):
+        class_info = GraphService.get_class_info(gid, class_relative_uri_list)
         for key in class_info:
             self.schema[key] = class_info[key]
 
@@ -361,141 +507,7 @@ class SchemaController:
             prop_type = GraphService.OBJECT_PROPERTY
         return self.schema[class_uri][prop_type][prop_uri][GraphService.RANGE]
 
-class NodeLabelCache:
-    """
 
-
-    Attributes:
-        neo_util: Neo4jUtil
-        node_label_map: {
-            [label_name]: {
-                hit: int,
-                nodes: set()
-            },
-            ...
-        }
-    """
-
-    HIT = 'hit'
-    NODES = 'nodes'
-    MIN_HIT = -100
-
-    step = 2000
-    node_label_map = {}
-    updated_labels = set()
-
-    def __init__(self, neo_util):
-        self.neo_util = neo_util
-
-    def fetch_node_sets(self, labels):
-        """
-        从缓存获取labels 对应的nodes
-        :param labels:
-        :return:
-        """
-        node_sets = set()
-        for label in labels:
-            node_sets.update(self._fetch_node_set(label))
-        return node_sets
-
-    def _fetch_node_set(self, label):
-        """
-        从缓存获取nodes，若不存在与缓存则从db 获取
-        :param label:
-        :return: set
-        """
-        if label not in self.node_label_map:
-            self._load_node_set_from_db(label)
-        node_set = self.node_label_map[label][self.NODES]
-        self.node_label_map[label][self.HIT] += 1
-        return node_set
-
-    def _clear_cache(self):
-        """
-        清除缓存
-        所有label 的hit -= 1
-        hit < MIN_HIT 的label 清除，即最近-MIN_HIT次未命中
-        :return: None
-        """
-        for label in self.node_label_map:
-            node_label_obj = self.node_label_map[label]
-            node_label_obj[self.HIT] -= 1
-            if node_label_obj[self.HIT] < self.MIN_HIT:
-                del self.node_label_map[label]
-
-    def _update_cached_node_set(self, label):
-        """
-        更新label 对应的node 缓存（在添加了新节点以后执行）
-        :param label:
-        :return: None
-        """
-        if label not in self.node_label_map:
-            return
-        node_label_obj = self.node_label_map[label]
-        count = len(node_label_obj[self.NODES])
-        new_added_node_set = self._read_node_set_from_db_idx(label, count)
-        node_label_obj[self.NODES].update(new_added_node_set)
-
-    def add_updated_labels(self, labels):
-        """
-        添加更新过的label
-        :param label:
-        :return:
-        """
-        self.updated_labels.update(labels)
-
-    def _clear_updated_label(self):
-        self.updated_labels.clear()
-
-    def update_cache(self):
-        """
-        更新缓存，根据已记录的更新的标签
-        :return:
-        """
-        for label in self.updated_labels:
-            self._update_cached_node_set(label)
-        self._clear_updated_label()
-        try:
-            self._clear_cache()
-        except Exception as e:
-            print(e)
-
-    def _read_node_set_from_db_idx(self, label, idx=0):
-        """
-        从neo4jdb 读入对应标签的所有node，以idx 作为起始
-        :param label:
-        :param idx:
-        :return: set
-        """
-        node_set = set()
-        step = self.step
-        cursor = self.neo_util.matcher.match(label)
-        total = len(cursor)
-        while idx < total:
-            r = cursor.limit(step).skip(idx)
-            node_set.update(r)
-            idx += step
-        return node_set
-
-    def _load_node_set_from_db(self, label):
-        """
-        从neo4jdb 读入对应标签的所有node
-        :param label:
-        :return: None
-        """
-        node_set = set()
-        step = self.step
-        cursor = self.neo_util.matcher.match(label)
-        total = len(cursor)
-        idx = 0
-        while idx < total:
-            r = cursor.limit(step).skip(idx)
-            node_set.update(r)
-            idx += step
-        self.node_label_map[label] = {
-            self.HIT: 0,
-            self.NODES: node_set
-        }
 
 
 
