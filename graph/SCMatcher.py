@@ -146,14 +146,23 @@ class SCMatcher:
         return 1
 
     def _attr_dist(self, node_gd, node_gq):
-
+        """
+        计算属性相似度
+        :param node_gd: node from database
+        :param node_gq: node from query
+        :return:
+        """
         numeric_type = [int, float]
         str_type = [str]
         list_type = [list]
+        categorical_type = [bool]
+
         props_gd = dict(node_gd)
         props_gq = dict(node_gq)
         common_props = props_gd.keys() & props_gq.keys()
+
         dist = 0
+
         if len(common_props) == 0:
             return 1
 
@@ -165,6 +174,7 @@ class SCMatcher:
 
         def numeric_dist(pgd, pgq):
             return 1 - 1 / (1 + np.abs(pgd - pgq))
+
 
         def text_dist(pgd, pgq):
             if pgd == '' and pgq == '':
@@ -197,13 +207,20 @@ class SCMatcher:
                 dist_func = numeric_dist
             elif type(pgd_list[0]) in str_type:
                 dist_func = text_dist
+            elif type(pgd_list[0]) in categorical_type:
+                dist_func = categorical_dist
 
             for p1 in pgd_list:
                 for p2 in pgd_list:
                     min_dist = min(min_dist, dist_func(p1, p2))
             return min_dist
 
+        # 以_ 开头的属性不参与相似度计算
+        skip_prop_num = 0
         for prop in common_props:
+            if prop['0'] == '_':
+                skip_prop_num += 1
+                continue
             pgd = props_gd[prop]
             pgq = props_gq[prop]
             # if type(pgd) != type(pgq):
@@ -217,6 +234,8 @@ class SCMatcher:
             # pgd 与pgq 都是字符
             elif (pgd_type in str_type) and (pgq_type in str_type):
                 dist += text_dist(pgd, pgq)
+            elif (pgd_type in categorical_type) and (pgq_type in categorical_type):
+                dist += categorical_dist(pgd, pgq)
             # pgd 是数组，pgq 是数组
             elif (pgd_type in list_type) and (pgq_type in list_type):
                 dist += list_dist(pgd, pgq)
@@ -228,7 +247,7 @@ class SCMatcher:
                 dist += list_dist([pgd], pgq)
             else:
                 raise Exception('attr_type[%s][%s] not defined' % (pgd_type, pgq_type))
-        return dist / len(common_props)
+        return dist / (len(common_props) - skip_prop_num)
 
 
 def test1():
