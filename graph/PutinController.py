@@ -1,10 +1,11 @@
-from neo4jdb.Neo4jUtil import neo_util, NeoUtil
+from neo4jdb.Neo4jUtil import NeoUtil
 from py2neo.data import Node, Relationship
 from neo4jdb.ExSubgraph import ExSubgraph
 from graph.SCMatcher import SCMatcher
 from graph.GraphService import GraphService
 from Utils import deprecated
 import jieba
+from neo4j.exceptions import ServiceUnavailable
 
 KEY_NODE = 'node'
 KEY_REL = 'rel'
@@ -174,15 +175,30 @@ class PutinController:
             self.node_label_cache_map[gid] = NodeLabelCache(self.neo_util_map[gid])
         gq = self.trans_entity_arr_to_graph(gid, entity_arr)
         gd_nodes = self.node_label_cache(gid).fetch_node_sets(gq.subgraph.labels)
-        sc_matcher = SCMatcher(gd_nodes, gq, rs=0, K=3, st=0.9)
+        sc_matcher = SCMatcher(gd_nodes, gq, rs=0, K=3, st=0.9, neo_util=self.neo_util_map[gid])
         match = sc_matcher.run()
         # 更新图
         ng = self.update_data_graph(gid, gq, match)
+
+        self.neo_util(gid).reconnect()
         # 补充已有节点的属性
-        self.neo_util(gid).graph.push(ng.subgraph)
+        print('graph.push...')
+        try:
+            self.neo_util(gid).graph.push(ng.subgraph)
+        except ServiceUnavailable:
+            self.neo_util(gid).reconnect()
+            self.neo_util(gid).graph.push(ng.subgraph)
+
         # 添加新属性与关系
-        self.neo_util(gid).graph.create(ng.subgraph)
+        print('graph.create...')
+        try:
+            self.neo_util(gid).graph.create(ng.subgraph)
+        except ServiceUnavailable:
+            self.neo_util(gid).reconnect()
+            self.neo_util(gid).graph.create(ng.subgraph)
+
         # 更新缓存
+        print('update_cache...')
         self.node_label_cache(gid).update_cache()
 
     def neo_util(self, gid: int) -> NeoUtil:
