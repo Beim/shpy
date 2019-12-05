@@ -4,7 +4,7 @@ import numpy as np
 import Levenshtein
 from functools import cmp_to_key
 import copy
-from neo4jdb.Neo4jUtil import neo_util
+from neo4jdb.Neo4jUtil import NeoUtil
 
 
 class SCMatcher:
@@ -24,7 +24,8 @@ class SCMatcher:
         schema_local: dict # local cache
     """
 
-    def __init__(self, gd_nodes, gq, rs, K=1, st=0.9):
+    def __init__(self, gd_nodes, gq, rs, K=1, st=0.9, neo_util: NeoUtil = None):
+        self.neo_util = neo_util
         self.gq = gq
         self.gd_vnum = len(gd_nodes)
         self.gd_nodes = list(gd_nodes)
@@ -99,7 +100,7 @@ class SCMatcher:
         return sim
 
     def _match_struc_sim(self, match):
-        neo4j = neo_util
+        neo4j = self.neo_util
         nmatch = {}
         for k in match:
             if match[k] is None:
@@ -218,7 +219,7 @@ class SCMatcher:
         # 以_ 开头的属性不参与相似度计算
         skip_prop_num = 0
         for prop in common_props:
-            if prop['0'] == '_':
+            if prop[0] == '_':
                 skip_prop_num += 1
                 continue
             pgd = props_gd[prop]
@@ -250,33 +251,34 @@ class SCMatcher:
         return dist / (len(common_props) - skip_prop_num)
 
 
-def test1():
-    a = Node('Person', name='p1')
-    b = Node('Person', name='p2')
-    c = Node('Person', name='p3')
-    ab = Relationship(a, 'knows', b)
-    ac = Relationship(a, 'knows', c)
-
-    d = Node('Person', name='p4')
-    e = Node('Person', name='xy')
-    de = Relationship(d, 'knows', e)
-
-    gd = ExSubgraph()
-    gq = ExSubgraph()
-
-    gd.add_relationship(ab)
-    gd.add_relationship(ac)
-
-    gq.add_relationship(de)
-
-    sc_matcher = SCMatcher(gd.get_nodes(), gq, 0, 3, 0.9)
-    # match = sc_matcher.run()
-
-    dist = sc_matcher._attr_dist(a, b)
-    print('dist = %s' % dist)
+# def test1():
+#     a = Node('Person', name='p1')
+#     b = Node('Person', name='p2')
+#     c = Node('Person', name='p3')
+#     ab = Relationship(a, 'knows', b)
+#     ac = Relationship(a, 'knows', c)
+#
+#     d = Node('Person', name='p4')
+#     e = Node('Person', name='xy')
+#     de = Relationship(d, 'knows', e)
+#
+#     gd = ExSubgraph()
+#     gq = ExSubgraph()
+#
+#     gd.add_relationship(ab)
+#     gd.add_relationship(ac)
+#
+#     gq.add_relationship(de)
+#
+#     sc_matcher = SCMatcher(gd.get_nodes(), gq, 0, 3, 0.9)
+#     # match = sc_matcher.run()
+#
+#     dist = sc_matcher._attr_dist(a, b)
+#     print('dist = %s' % dist)
 
 
 if __name__ == '__main__':
-    test1()
+    pass
+    # test1()
 
     
