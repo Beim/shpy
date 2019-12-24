@@ -6,13 +6,11 @@ from config_loader import config_loader
 class NeoUtil:
 
     def __init__(self, uri, username=None, password=None):
-        cfg = config_loader.get_config()['neo4j']
-        # if uri is None:
-        #     uri = cfg['uri']
-        if username is None:
+        if username is None or password is None:
+            cfg = config_loader.get_config()['neo4j']
             username = cfg['username']
-        if password is None:
             password = cfg['password']
+
         self.uri = uri
         self.username = username
         self.password = password
