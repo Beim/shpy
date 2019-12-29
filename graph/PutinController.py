@@ -81,8 +81,9 @@ class NodeLabelCache:
         if label not in self.node_label_map:
             return
         node_label_obj = self.node_label_map[label]
-        count = len(node_label_obj[self.NODES])
-        new_added_node_set = self._read_node_set_from_db_idx(label, count)
+        # count 记录当前缓存了该标签的节点数量，更新缓存的时候根据id顺序跳过这些节点，只更新后面添加的节点（但是这样会导致只更新到新加节点，没有更新到改变的已有节点）
+        # count = len(node_label_obj[self.NODES])
+        new_added_node_set = self._read_node_set_from_db_idx(label, 0)
         node_label_obj[self.NODES].update(new_added_node_set)
 
     def add_updated_labels(self, labels):
