@@ -66,7 +66,7 @@ class ResourceQueueReceiver:
         except Exception as e:
             print(e)
             # 异常，返回nack
-            ch.basic_nack(delivery_tag=method.delivery_tag)
+            ch.basic_nack(delivery_tag=method.delivery_tag, requeue=False)
             print('nack', data)
 
 
