@@ -72,19 +72,27 @@ class NodeLabelCache:
             if node_label_obj[self.HIT] < self.MIN_HIT:
                 del self.node_label_map[label]
 
-    def _update_cached_node_set(self, label):
+    def _update_cached_node_set(self, label, updated_nodes: dict):
         """
         更新label 对应的node 缓存（在添加了新节点以后执行）
         :param label:
+        :param updated_nodes: 更新的节点
         :return: None
         """
         if label not in self.node_label_map:
             return
         node_label_obj = self.node_label_map[label]
         # count 记录当前缓存了该标签的节点数量，更新缓存的时候根据id顺序跳过这些节点，只更新后面添加的节点（但是这样会导致只更新到新加节点，没有更新到改变的已有节点）
-        # count = len(node_label_obj[self.NODES])
-        new_added_node_set = self._read_node_set_from_db_idx(label, 0)
+        count = len(node_label_obj[self.NODES])
+        new_added_node_set = self._read_node_set_from_db_idx(label, count)
         node_label_obj[self.NODES].update(new_added_node_set)
+        # 重新获取已有（但有更新）的节点，解决前面跳过count 个而漏掉更新节点的问题
+        if label not in updated_nodes:
+            return
+        updated_node_id_list = list(updated_nodes[label])
+        for identity in updated_node_id_list:
+            up_to_date_node = self.neo_util.matcher.get(identity)
+            node_label_obj[self.NODES].add(up_to_date_node)
 
     def add_updated_labels(self, labels):
         """
@@ -97,13 +105,13 @@ class NodeLabelCache:
     def _clear_updated_label(self):
         self.updated_labels.clear()
 
-    def update_cache(self):
+    def update_cache(self, updated_nodes):
         """
         更新缓存，根据已记录的更新的标签
         :return:
         """
         for label in self.updated_labels:
-            self._update_cached_node_set(label)
+            self._update_cached_node_set(label, updated_nodes)
         self._clear_updated_label()
         try:
             self._clear_cache()
@@ -178,6 +186,7 @@ class PutinController:
         gd_nodes = self.node_label_cache(gid).fetch_node_sets(gq.subgraph.labels)
         sc_matcher = SCMatcher(gd_nodes, gq, rs=0, K=3, st=0.9, neo_util=self.neo_util_map[gid])
         match = sc_matcher.run()
+        updated_nodes = self.get_updated_nodes(match)
         # 更新图
         ng = self.update_data_graph(gid, gq, match)
 
@@ -200,7 +209,7 @@ class PutinController:
 
         # 更新缓存
         print('update_cache...')
-        self.node_label_cache(gid).update_cache()
+        self.node_label_cache(gid).update_cache(updated_nodes)
 
     def neo_util(self, gid: int) -> NeoUtil:
         return self.neo_util_map[gid]
@@ -222,6 +231,25 @@ class PutinController:
                 print('None\n')
             else:
                 print('d[%s] ' % dn.identity, dn.labels, dict(dn), '\n')
+
+    def get_updated_nodes(self, match):
+        """
+        根据匹配表，获取更新的已有节点
+        :param match:
+        :return: {'label_xxx': {101, 102, ...}} 标签：节点id集合
+        """
+        updated_nodes = {}
+        for node_q in match:
+            node_d = match[node_q]
+            if node_d is None:
+                continue
+            labels = node_d.labels
+            for label in labels:
+                if label not in updated_nodes:
+                    updated_nodes[label] = set()
+                updated_nodes[label].add(node_d.identity)
+        return updated_nodes
+
 
     def update_data_graph(self, gid: int, gq, match):
         """
@@ -253,6 +281,7 @@ class PutinController:
                     else:
                         node_d[k] = prop_q[k]
                 ng.add_node(node_d)
+                self.node_label_cache(gid).add_updated_labels(node_d.labels)
         # 处理relationship
         for rel in gq.subgraph.relationships:
             start_node_q = rel.start_node
