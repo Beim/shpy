@@ -184,7 +184,7 @@ class PutinController:
             self.node_label_cache_map[gid] = NodeLabelCache(self.neo_util_map[gid])
         gq = self.trans_entity_arr_to_graph(gid, entity_arr)
         gd_nodes = self.node_label_cache(gid).fetch_node_sets(gq.subgraph.labels)
-        sc_matcher = SCMatcher(gd_nodes, gq, rs=0, K=3, st=0.9, neo_util=self.neo_util_map[gid])
+        sc_matcher = SCMatcher(gd_nodes, gq, rs=0, K=3, st=0.8, neo_util=self.neo_util_map[gid])
         match = sc_matcher.run()
         updated_nodes = self.get_updated_nodes(match)
         # 更新图
