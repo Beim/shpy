@@ -6,6 +6,7 @@ from graph.GraphService import GraphService
 from Utils import deprecated
 import jieba
 from neo4j.exceptions import ServiceUnavailable
+import threading
 
 KEY_NODE = 'node'
 KEY_REL = 'rel'
@@ -83,16 +84,17 @@ class NodeLabelCache:
             return
         node_label_obj = self.node_label_map[label]
         # count 记录当前缓存了该标签的节点数量，更新缓存的时候根据id顺序跳过这些节点，只更新后面添加的节点（但是这样会导致只更新到新加节点，没有更新到改变的已有节点）
-        count = len(node_label_obj[self.NODES])
-        new_added_node_set = self._read_node_set_from_db_idx(label, count)
+        # count = len(node_label_obj[self.NODES])
+        # new_added_node_set = self._read_node_set_from_db_idx(label, count)
+        new_added_node_set = self._read_node_set_from_db_idx(label, 0)
         node_label_obj[self.NODES].update(new_added_node_set)
         # 重新获取已有（但有更新）的节点，解决前面跳过count 个而漏掉更新节点的问题
-        if label not in updated_nodes:
-            return
-        updated_node_id_list = list(updated_nodes[label])
-        for identity in updated_node_id_list:
-            up_to_date_node = self.neo_util.matcher.get(identity)
-            node_label_obj[self.NODES].add(up_to_date_node)
+        # if label not in updated_nodes:
+        #     return
+        # updated_node_id_list = list(updated_nodes[label])
+        # for identity in updated_node_id_list:
+        #     up_to_date_node = self.neo_util.matcher.get(identity)
+        #     node_label_obj[self.NODES].add(up_to_date_node)
 
     def add_updated_labels(self, labels):
         """
@@ -170,6 +172,7 @@ class PutinController:
     def __init__(self):
         self.neo_util_map = {}
         self.node_label_cache_map = {}
+        self.post_lock = threading.Lock()
 
     def post(self, gid: int, uri: str, entity_arr: list):
         """
