@@ -406,8 +406,8 @@ class PutinController:
         new_node = Node(class_uri)
         new_rel = {}
         for key in entity:
-            if key is self.LABEL:
-                pass
+            if key == self.LABEL:
+                continue
             prop_uri = key
             if schema_controller.is_datatype_property(class_uri, prop_uri):
                 prop_val = entity[key]
@@ -431,6 +431,7 @@ class PutinController:
                                                                 check_label=True, return_new_node=False)
                         if old_node is not None:
                             new_rel[prop_uri] = old_node
+                            break
 
                     pass
                 else:  # 未指定range

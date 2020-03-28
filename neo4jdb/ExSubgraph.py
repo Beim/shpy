@@ -259,7 +259,11 @@ class ExSubgraph:
         """
         if self.subgraph is not None:
             for old_node in self.subgraph.nodes:
-                has_old_node = dict(old_node) == dict(new_node)
+                has_old_node = True
+                for k in old_node:
+                    if old_node[k] != new_node[k]:
+                        has_old_node = False
+                        break
                 if check_label:
                     has_old_node = has_old_node and (new_node.labels == old_node.labels)
                 if has_old_node:
