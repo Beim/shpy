@@ -58,9 +58,9 @@ class ResourceQueueReceiver:
         neo4j_host = info['host']
         neo4j_bolt_port = info['boltport']
         data = info['data']
-        with self.p_controller.post_lock:
-            self.p_controller.post(gid, 'bolt://%s:%s' % (neo4j_host, neo4j_bolt_port), data)
         try:
+            with self.p_controller.post_lock:
+                self.p_controller.post(gid, 'bolt://%s:%s' % (neo4j_host, neo4j_bolt_port), data)
             # 确认，返回ack
             ch.basic_ack(delivery_tag=method.delivery_tag)
             print('ack', data)
